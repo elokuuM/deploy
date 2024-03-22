@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:\\opencv\\build\\include",
+                "D:\\opencv\\build\\include\\opencv2",
+                "D:\\ncnn\\protobuf_build\\install\\include",
+                "D:\\ncnn\\protobuf_build\\install\\include\\ncnn",
+                "D:\\ncnn\\src",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um/qcc"
+            ],
+            "defines": [
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}

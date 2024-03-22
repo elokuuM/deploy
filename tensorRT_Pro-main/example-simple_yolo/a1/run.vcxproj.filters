@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\TT\Desktop\DL\deploy\tensorRT_Pro-main\example-simple_yolo\a1\CMakeFiles\662ba1f31eed6f310dec2623c850c7e2\run.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\TT\Desktop\DL\deploy\tensorRT_Pro-main\example-simple_yolo\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\TT\Desktop\DL\deploy\tensorRT_Pro-main\example-simple_yolo\a1\CMakeFiles\run" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E265F18B-E4C5-38AC-AE1E-870632273740}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

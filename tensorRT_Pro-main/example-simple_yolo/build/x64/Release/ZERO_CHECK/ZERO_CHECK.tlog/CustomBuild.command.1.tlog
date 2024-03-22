@@ -1,0 +1,10 @@
+^C:\USERS\TT\DESKTOP\DL\DEPLOY\TENSORRT_PRO-MAIN\EXAMPLE-SIMPLE_YOLO\BUILD\CMAKEFILES\522CD424EEFC7E33B1F0CDD4FEF625CF\GENERATE.STAMP.RULE
+setlocal
+D:\cmake-3.28.1-windows-x86_64\bin\cmake.exe -SC:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo -BC:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/build/pro.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

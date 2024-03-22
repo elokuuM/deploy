@@ -1,0 +1,26 @@
+^C:\USERS\TT\DESKTOP\DL\DEPLOY\TENSORRT_PRO-MAIN\EXAMPLE-SIMPLE_YOLO\SRC\SIMPLE_YOLO.CU
+setlocal
+cd C:\Users\TT\Desktop\DL\deploy\tensorRT_Pro-main\example-simple_yolo\build\CMakeFiles\cucodes.dir\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+D:\cmake-3.28.1-windows-x86_64\bin\cmake.exe -E make_directory C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/build/CMakeFiles/cucodes.dir/src/Release
+if %errorlevel% neq 0 goto :cmEnd
+D:\cmake-3.28.1-windows-x86_64\bin\cmake.exe -D verbose:BOOL=OFF -D "CCBIN:PATH=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools/MSVC/14.37.32822/bin/Hostx64/x64" -D build_configuration:STRING=Release -D generated_file:STRING=C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/build/CMakeFiles/cucodes.dir/src/Release/cucodes_generated_simple_yolo.cu.obj -D generated_cubin_file:STRING=C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/build/CMakeFiles/cucodes.dir/src/Release/cucodes_generated_simple_yolo.cu.obj.cubin.txt -P C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/build/CMakeFiles/cucodes.dir/src/cucodes_generated_simple_yolo.cu.obj.Release.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\TT\DESKTOP\DL\DEPLOY\TENSORRT_PRO-MAIN\EXAMPLE-SIMPLE_YOLO\CMAKELISTS.TXT
+setlocal
+D:\cmake-3.28.1-windows-x86_64\bin\cmake.exe -SC:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo -BC:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/build --check-stamp-file C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
