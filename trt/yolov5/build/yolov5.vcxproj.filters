@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov5\src\builder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov5\src\infer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov5\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov5\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0E681D05-4609-38CD-A7FE-9494269C115B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

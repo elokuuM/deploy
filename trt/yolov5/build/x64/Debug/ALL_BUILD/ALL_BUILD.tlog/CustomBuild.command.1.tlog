@@ -1,0 +1,10 @@
+^C:\USERS\ELOKUU\DESKTOP\DL\DEPLOY\TRT\YOLOV5\CMAKELISTS.TXT
+setlocal
+D:\CMake\bin\cmake.exe -SC:/Users/elokuu/Desktop/DL/deploy/trt/yolov5 -BC:/Users/elokuu/Desktop/DL/deploy/trt/yolov5/build --check-stamp-file C:/Users/elokuu/Desktop/DL/deploy/trt/yolov5/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,231 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "pro",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "alphapose::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-alphapose-Debug-3c3948939a8c2feb595b.json",
+					"name" : "alphapose",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "arcface::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-arcface-Debug-1f948d11d43738a735bd.json",
+					"name" : "arcface",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "bert::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bert-Debug-daac85e13207a224ad33.json",
+					"name" : "bert",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "centernet::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-centernet-Debug-3bef5adef960db7a4ab3.json",
+					"name" : "centernet",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dbface::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dbface-Debug-120f52775feb5e3dd3c1.json",
+					"name" : "dbface",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fall-Debug-b7bca3fef232260884e3.json",
+					"name" : "fall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lesson::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lesson-Debug-860af4a67ca78e26136a.json",
+					"name" : "lesson",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "plugin_list::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-plugin_list-Debug-867a29949258518c8d35.json",
+					"name" : "plugin_list",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pro::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pro-Debug-56230bb6d762d9df44ec.json",
+					"name" : "pro",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pycenternet::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pycenternet-Debug-b428730a9c9c0deb4d0b.json",
+					"name" : "pycenternet",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pyinstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pyinstall-Debug-5d72c746ad713540516e.json",
+					"name" : "pyinstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pyscrfd::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pyscrfd-Debug-ebec61bd8678c15b101c.json",
+					"name" : "pyscrfd",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pytorch::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pytorch-Debug-106c25334853d0c32d4b.json",
+					"name" : "pytorch",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pytrtc::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pytrtc-Debug-a7088350cf9675ab0179.json",
+					"name" : "pytrtc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pyyolov5::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pyyolov5-Debug-c26876f4743527a36e6a.json",
+					"name" : "pyyolov5",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "retinaface::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-retinaface-Debug-19005827b54a20a115c0.json",
+					"name" : "retinaface",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "scrfd::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-scrfd-Debug-d7d4d798b78c5b7d8553.json",
+					"name" : "scrfd",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "yolo::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-yolo-Debug-16f2d3bc361ce8a028e6.json",
+					"name" : "yolo",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "yolo_fast::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-yolo_fast-Debug-40ef653e386365a74aa1.json",
+					"name" : "yolo_fast",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "yolo_gpuptr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-yolo_gpuptr-Debug-3602ad486f63f718fed0.json",
+					"name" : "yolo_gpuptr",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/out/build/x64-Debug",
+		"source" : "C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}

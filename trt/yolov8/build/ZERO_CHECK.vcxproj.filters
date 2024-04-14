@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov8\build\CMakeFiles\df1682f3c823b15d1859136d5a8f9849\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{F5740B99-4D43-3FA7-81F9-BFC5FAFCEE70}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

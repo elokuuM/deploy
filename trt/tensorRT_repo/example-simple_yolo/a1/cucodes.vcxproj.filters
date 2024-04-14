@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\TT\Desktop\DL\deploy\tensorRT_Pro-main\example-simple_yolo\src\simple_yolo.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\TT\Desktop\DL\deploy\tensorRT_Pro-main\example-simple_yolo\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="C:\Users\TT\Desktop\DL\deploy\tensorRT_Pro-main\example-simple_yolo\a1\CMakeFiles\cucodes.dir\src\$(Configuration)\cucodes_generated_simple_yolo.cu.obj">
+      <Filter>Object Files</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object Files">
+      <UniqueIdentifier>{85DAAE25-D072-3DC2-83D9-757BD483712C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C4F94300-9037-3E3E-9906-52A86B912BDC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

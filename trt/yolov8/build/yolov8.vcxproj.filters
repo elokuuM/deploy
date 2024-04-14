@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov8\src\infer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov8\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov8\src\nms.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov8\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="C:\Users\elokuu\Desktop\DL\deploy\trt\yolov8\build\CMakeFiles\yolov8.dir\src\$(Configuration)\yolov8_generated_nms.cu.obj">
+      <Filter>Object Files</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object Files">
+      <UniqueIdentifier>{40C2CC3C-223E-3955-8FAD-A7BD8F887064}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2AA32445-6CBD-3DB7-B5E7-3E1F379BA64B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

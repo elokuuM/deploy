@@ -1,0 +1,10 @@
+^C:\USERS\ELOKUU\DESKTOP\DL\DEPLOY\TRT\PLUGIN_EXAMPLE\BUILD\CMAKEFILES\4A3D37A0E715AC8CAE609F70E3669076\GENERATE.STAMP.RULE
+setlocal
+D:\CMake\bin\cmake.exe -SC:/Users/elokuu/Desktop/DL/deploy/trt/plugin_example -BC:/Users/elokuu/Desktop/DL/deploy/trt/plugin_example/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/elokuu/Desktop/DL/deploy/trt/plugin_example/build/newop.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,26 @@
+^C:\USERS\ELOKUU\DESKTOP\DL\DEPLOY\TRT\YOLOV8\SRC\NMS.CU
+setlocal
+cd C:\Users\elokuu\Desktop\DL\deploy\trt\yolov8\build\CMakeFiles\yolov8.dir\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -E make_directory C:/Users/elokuu/Desktop/DL/deploy/trt/yolov8/build/CMakeFiles/yolov8.dir/src/Debug
+if %errorlevel% neq 0 goto :cmEnd
+D:\CMake\bin\cmake.exe -D verbose:BOOL=OFF -D "CCBIN:PATH=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools/MSVC/14.33.31629/bin/Hostx64/x64" -D build_configuration:STRING=Debug -D generated_file:STRING=C:/Users/elokuu/Desktop/DL/deploy/trt/yolov8/build/CMakeFiles/yolov8.dir/src/Debug/yolov8_generated_nms.cu.obj -D generated_cubin_file:STRING=C:/Users/elokuu/Desktop/DL/deploy/trt/yolov8/build/CMakeFiles/yolov8.dir/src/Debug/yolov8_generated_nms.cu.obj.cubin.txt -P C:/Users/elokuu/Desktop/DL/deploy/trt/yolov8/build/CMakeFiles/yolov8.dir/src/yolov8_generated_nms.cu.obj.Debug.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ELOKUU\DESKTOP\DL\DEPLOY\TRT\YOLOV8\CMAKELISTS.TXT
+setlocal
+D:\CMake\bin\cmake.exe -SC:/Users/elokuu/Desktop/DL/deploy/trt/yolov8 -BC:/Users/elokuu/Desktop/DL/deploy/trt/yolov8/build --check-stamp-file C:/Users/elokuu/Desktop/DL/deploy/trt/yolov8/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
