@@ -1,5 +1,0 @@
-C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/a1/CMakeFiles/cucodes.dir
-C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/a1/CMakeFiles/pro.dir
-C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/a1/CMakeFiles/run.dir
-C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/a1/CMakeFiles/ALL_BUILD.dir
-C:/Users/TT/Desktop/DL/deploy/tensorRT_Pro-main/example-simple_yolo/a1/CMakeFiles/ZERO_CHECK.dir
