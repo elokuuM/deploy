@@ -1,5 +1,7 @@
 #include <infer.hpp>
 #include <nms.h>
+#include <json.h>
+
 using namespace std;
 using namespace sample;
 
@@ -30,6 +32,10 @@ int inferEngine(char* ege_file_path, string input_path) {
             assert(data); 
             file.read(data, size); 
             file.close(); 
+    }
+    else {
+        printf("trt file error!");
+        return 0;
     }
 
     //通过反序列化构建engine
@@ -71,16 +77,18 @@ int inferEngine(char* ege_file_path, string input_path) {
     for (int i = 0; i < file_names.size(); i++){
         
         clock_t start, end;
-        start = clock();
-
+        
+        
         cv::Mat img = cv::imread(file_names[i], cv::IMREAD_COLOR);
-        cv::Mat img2;
-        cv::resize(img, img2, cv::Size(640, 640));
+        cv::resize(img, img, cv::Size(640, 640));
+        start = clock();
         preprocess(img, input); //cv::Mat to float*
+
 
         doInference(context, input, output);
 
-
+        cudaDeviceSynchronize();
+        
         cudaMemset(nmsout_d, 0, nmsout_size);
         memset(nmsout_h, 0, nmsout_size);
         decode_kernel_invoker(output, 8400, 80, 0.25, 0.7, nmsout_d, 1024);
@@ -93,9 +101,9 @@ int inferEngine(char* ege_file_path, string input_path) {
             latency = second;
         else  
             latency = (latency + second)/2;
-        draw_frame(img2, results);
+        draw_frame(img, results);
         cout<<"["<<i+1<<"/"<<file_names.size()<<"] "<<"./pred/" + Getfilename(input_path, file_names[i])<<" latency = "<<latency*1000<<"ms"<<endl;
-        cv::imwrite("./workspace/Debug/pred/" + Getfilename(input_path, file_names[i]), img2);
+        cv::imwrite("./workspace/Debug/pred/" + Getfilename(input_path, file_names[i]), img);
 
 
         // std::vector<detect_result> results;
@@ -204,21 +212,20 @@ void preprocess(cv::Mat src, float *data) {
     // 2.uchar->CV_32F, scale to [0,1]
     src.convertTo(src, CV_32F);
     src /= 255.0;
-
     // 3.split R,G,B and normal each channel using norm_means,norm_stds
+
     vector<cv::Mat> channels;
     cv::split(src, channels);
-    cv::Scalar means, stds;
-    for (int i = 0; i < 3; ++i) {
-        cv::Mat a = channels[i]; // b
-        cv::meanStdDev(a, means, stds);
-        a = a / stds.val[0] * norm_stds[i]; // change std, mean also change
-        means = cv::mean(a); // recompute mean!
-        a = a - means.val[0] + norm_means[i];
-        channels[i] = a;
-    }
 
-
+    // cv::Scalar means, stds;
+    // for (int i = 0; i < 3; ++i) {
+    //     cv::Mat a = channels[i]; // b
+    //     cv::meanStdDev(a, means, stds);
+    //     a = a / stds.val[0] * norm_stds[i]; // change std, mean also change
+    //     means = cv::mean(a); // recompute mean!
+    //     a = a - means.val[0] + norm_means[i];
+    //     channels[i] = a;
+    // }
     // 4.pass to data, ravel()
     int index = 0;
     for (int c = 2; c >= 0; --c) { // R,G,B
@@ -351,3 +358,19 @@ std::string Getfilename(std::string &Orgfolder, cv::String &Orgfilenames)
 	std::string filename = a;//构造String类型数据
 	return filename;
 }
+
+// void writeResultsToJson(const std::vector<detect_result> &results, const std::string& filename) {
+//     json json_results;
+//     for (const auto& result : results) {
+//         json data;
+//         data["image_id"] = result.image_id;
+//         data["bbox"] = result.bbox;
+//         data["score"] = result.score;
+//         data["category_id"] = result.category_id;
+//         json_results.push_back(data);
+//     }
+
+//     std::ofstream ofs(filename);
+//     ofs << json_results.dump(4); // 4表示缩进的空格数
+//     ofs.close();
+// }
