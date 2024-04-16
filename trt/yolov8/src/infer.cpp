@@ -59,13 +59,13 @@ int inferEngine(char* ege_file_path, string input_path) {
     cout<< "start infer "<< file_names.size()<<" images"<<endl;
     float* input = (float*)malloc(3*640*640*sizeof(float));
 
-    float* output = (float*)malloc(8400*84*sizeof(float)); 
-    // float* output=NULL;
-    // cudaMalloc((void **)&output, 8400*84*sizeof(float));
-    // size_t nmsout_size = 1+1024*7*sizeof(float);
-    // float* nmsout_d=NULL;
-    // cudaMalloc((void **)&nmsout_d, nmsout_size);
-    // float* nmsout_h = (float*)malloc(nmsout_size);
+    // float* output = (float*)malloc(8400*84*sizeof(float)); 
+    float* output=NULL;
+    cudaMalloc((void **)&output, 8400*84*sizeof(float));
+    size_t nmsout_size = 1+1024*7*sizeof(float);
+    float* nmsout_d=NULL;
+    cudaMalloc((void **)&nmsout_d, nmsout_size);
+    float* nmsout_h = (float*)malloc(nmsout_size);
 
     float latency=0;
     for (int i = 0; i < file_names.size(); i++){
@@ -80,44 +80,44 @@ int inferEngine(char* ege_file_path, string input_path) {
 
         doInference(context, input, output);
 
-        // cudaMemset(nmsout_d, 0, nmsout_size);
-        // memset(nmsout_h, 0, nmsout_size);
-        // decode_kernel_invoker(output, 8400, 80, 0.25, 0.7, nmsout_d, 1024);
-        // cudaMemcpy(nmsout_h, nmsout_d, nmsout_size, cudaMemcpyDeviceToHost);
-        // std::vector<detect_result> results;
-        // nmspostprocess(nmsout_h, results);
-        // end = clock();
-        // float second = float(end-start) / CLK_TCK;
-        // float latency = second / 5000; 
-        // if(latency==0)
-        //     latency = second / 5000;
-        // else  
-        //     latency = (latency + second / 5000)/2;
-        // draw_frame(img2, results);
-        // cout<<"["<<i+1<<"/"<<file_names.size()<<"] "<<"./pred/" + Getfilename(input_path, file_names[i])<<" latency = "<<latency<<endl;
-        // cv::imwrite("./workspace/Debug/pred/" + Getfilename(input_path, file_names[i]), img2);
 
+        cudaMemset(nmsout_d, 0, nmsout_size);
+        memset(nmsout_h, 0, nmsout_size);
+        decode_kernel_invoker(output, 8400, 80, 0.25, 0.7, nmsout_d, 1024);
+        cudaMemcpy(nmsout_h, nmsout_d, nmsout_size, cudaMemcpyDeviceToHost);
         std::vector<detect_result> results;
-        yolopostprocess(output, results);
+        nmspostprocess(nmsout_h, results);
         end = clock();
         float second = float(end-start) / CLK_TCK;
-        float latency = second / 5000; 
         if(latency==0)
-            latency = second / 5000;
+            latency = second;
         else  
-            latency = (latency + second / 5000)/2;
+            latency = (latency + second)/2;
         draw_frame(img2, results);
-        cout<<"["<<i+1<<"/"<<file_names.size()<<"] "<<"./pred/" + Getfilename(input_path, file_names[i])<<" latency = "<<latency<<endl;
+        cout<<"["<<i+1<<"/"<<file_names.size()<<"] "<<"./pred/" + Getfilename(input_path, file_names[i])<<" latency = "<<latency*1000<<"ms"<<endl;
         cv::imwrite("./workspace/Debug/pred/" + Getfilename(input_path, file_names[i]), img2);
+
+
+        // std::vector<detect_result> results;
+        // yolopostprocess(output, results);
+        // end = clock();
+        // float second = float(end-start) / CLK_TCK;
+        // if(latency==0)
+        //     latency = second;
+        // else  
+        //     latency = (latency + second)/2;
+        // draw_frame(img2, results);
+        // cout<<"["<<i+1<<"/"<<file_names.size()<<"] "<<"./pred/" + Getfilename(input_path, file_names[i])<<" latency = "<<latency*1000<<"ms"<<endl;
+        // cv::imwrite("./workspace/Debug/pred/" + Getfilename(input_path, file_names[i]), img2);
 
     }
     free(input);
 
-    free(output);
+    // free(output);
 
-    // cudaFree(output);
-    // free(nmsout_h);
-    // cudaFree(nmsout_d);
+    cudaFree(output);
+    free(nmsout_h);
+    cudaFree(nmsout_d);
     // PRINT_CONTEXT(context);
 
     // PRINT_ENGINE(engine);
@@ -177,7 +177,7 @@ void doInference(IExecutionContext* context, float* input, float* output) {
         nvinfer1::Dims dims = context->getBindingDimensions(i);
         // printf("output dims = {%d, %d, %d, %d} \n", dims.d[0], dims.d[1], dims.d[2], dims.d[3]);
         int volume = dims.d[0] * dims.d[1] * dims.d[2] * (dims.d[3]?dims.d[3]:1) * sizeof(float);
-        cudaMemcpy(output, d_buffers[i], volume, cudaMemcpyDeviceToHost);
+        cudaMemcpy(output, d_buffers[i], volume, cudaMemcpyDeviceToDevice);
 
         // printf("buffers[%d]: \n", i);
         // for (int _idx = 0; _idx < volume / sizeof(float) && _idx < 5; ++_idx)
