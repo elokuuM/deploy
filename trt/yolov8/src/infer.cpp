@@ -5,6 +5,12 @@
 using namespace std;
 using namespace sample;
 
+
+static const int INPUT_H = 512;
+static const int INPUT_W = 512;
+int anchor_nums = (INPUT_H/32) * (INPUT_W/32) + (INPUT_H/16) * (INPUT_W/16) + (INPUT_H/8) * (INPUT_W/8);
+const int anchor_data_nums = 84;   
+
 int inferEngine(char* ege_file_path, string input_path) {
     cout<<"running infer..."<<endl;
 
@@ -61,13 +67,12 @@ int inferEngine(char* ege_file_path, string input_path) {
      * 
      * */
     nvinfer1::IExecutionContext *context = engine->createExecutionContext();
-
     cout<< "start infer "<< file_names.size()<<" images"<<endl;
-    float* input = (float*)malloc(3*640*640*sizeof(float));
+    float* input = (float*)malloc(3*INPUT_H*INPUT_W*sizeof(float));
 
     // float* output = (float*)malloc(8400*84*sizeof(float)); 
     float* output=NULL;
-    cudaMalloc((void **)&output, 8400*84*sizeof(float));
+    cudaMalloc((void **)&output, anchor_nums*anchor_data_nums*sizeof(float));
     size_t nmsout_size = 1+1024*7*sizeof(float);
     float* nmsout_d=NULL;
     cudaMalloc((void **)&nmsout_d, nmsout_size);
@@ -80,22 +85,23 @@ int inferEngine(char* ege_file_path, string input_path) {
         
         
         cv::Mat img = cv::imread(file_names[i], cv::IMREAD_COLOR);
-        cv::resize(img, img, cv::Size(640, 640));
-        start = clock();
+        cv::resize(img, img, cv::Size(INPUT_W, INPUT_H));
+
+        
         preprocess(img, input); //cv::Mat to float*
 
-
+        start = clock();
         doInference(context, input, output);
 
         cudaDeviceSynchronize();
-        
+        end = clock();
         cudaMemset(nmsout_d, 0, nmsout_size);
         memset(nmsout_h, 0, nmsout_size);
-        decode_kernel_invoker(output, 8400, 80, 0.25, 0.7, nmsout_d, 1024);
+        decode_kernel_invoker(output, anchor_nums, 80, 0.25, 0.7, nmsout_d, 1024);
         cudaMemcpy(nmsout_h, nmsout_d, nmsout_size, cudaMemcpyDeviceToHost);
         std::vector<detect_result> results;
         nmspostprocess(nmsout_h, results);
-        end = clock();
+
         float second = float(end-start) / CLK_TCK;
         if(latency==0)
             latency = second;
@@ -204,10 +210,8 @@ void doInference(IExecutionContext* context, float* input, float* output) {
 void preprocess(cv::Mat src, float *data) {
     static const float norm_means[] = {0.406, 0.456, 0.485}; // src
     static const float norm_stds[] = {0.225, 0.224, 0.229};
-    static const int INPUT_H = 640;
-    static const int INPUT_W = 640;
     // 1.resize
-    cv::resize(src, src, cv::Size(INPUT_W, INPUT_H));
+    
 
     // 2.uchar->CV_32F, scale to [0,1]
     src.convertTo(src, CV_32F);
@@ -242,14 +246,14 @@ void preprocess(cv::Mat src, float *data) {
 void yolopostprocess(float* netout, std::vector<detect_result> &results) {
     const float confidence_threshold_ =0.25f;
     const float nms_threshold_ = 0.4f;
-    cv::Mat det_output(8400, 84, CV_32FC1);
-    memcpy((uchar*)det_output.data, netout, 8400*84* sizeof(float));
+    cv::Mat det_output(anchor_nums, anchor_data_nums, CV_32FC1);
+    memcpy((uchar*)det_output.data, netout, anchor_nums*anchor_data_nums* sizeof(float));
     std::vector<cv::Rect> boxes;
     std::vector<int> classIds;
     std::vector<float> confidences;
     for (int i = 0; i < det_output.rows; i++)
     {
-        cv::Mat classes_confidences = det_output.row(i).colRange(4, 84);
+        cv::Mat classes_confidences = det_output.row(i).colRange(4, anchor_data_nums);
         cv::Point classIdPoint;
         double cls_conf;
         cv::minMaxLoc(classes_confidences, 0, &cls_conf, 0, &classIdPoint);

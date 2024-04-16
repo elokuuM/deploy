@@ -4,3 +4,5 @@ images
 *.jpg
 *.png
 *.bmp
+*.onnx
+*.engine
